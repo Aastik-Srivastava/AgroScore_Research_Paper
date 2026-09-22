@@ -1,0 +1,2 @@
+best_params,cv_auc,test_auc
+"{'mlpclassifier__alpha': 0.1, 'mlpclassifier__hidden_layer_sizes': (16,)}",0.6270757028304945,0.6089525346339063

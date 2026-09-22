@@ -1,0 +1,11 @@
+pair,expected_sign,observed_rho,conforms
+drought_risk vs ndvi_anomaly,-1,-0.6443930667115982,True
+drought_risk vs soil_moisture,-1,-0.8927220328224379,True
+debt_to_income vs payment_history,-1,-0.48247747153582543,True
+debt_to_income vs credit_utilization,1,0.7632152831375069,True
+irrigation_access vs drought_risk,-1,-0.5670658859843641,True
+soil_moisture vs soil_health,1,0.5512334055424054,True
+drought_risk vs temperature_stress,1,0.6081774131293559,True
+drought_risk vs price_volatility,1,0.1930904251509292,True
+ndvi_anomaly vs ndvi_current,1,0.7635290045160782,True
+drought_risk vs rainfall_deviation,-1,-0.3009997077932031,True

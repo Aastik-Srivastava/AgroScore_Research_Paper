@@ -1,0 +1,6 @@
+task,model,metric,value,n_train,n_test
+lgd,Ridge,r2,0.3771245438944374,788,197
+lgd,Ridge,mae,0.07294362976034802,788,197
+lgd,XGBoost regressor,r2,0.3359838295522277,788,197
+lgd,XGBoost regressor,mae,0.07498135813906939,788,197
+time_to_default,Cox PH ridge,c_index,0.6092982336328833,6400,1600

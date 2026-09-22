@@ -1,0 +1,504 @@
+{
+  "target": "mean_abs_shap_vs_abs_additive_logit_structural_weight",
+  "n_features": 28,
+  "models": {
+    "XGBoost": {
+      "spearman_rho": 0.4591804177155391,
+      "spearman_pvalue": 0.013971387873876287,
+      "top_true_features": [
+        "payment_history",
+        "debt_to_income",
+        "prior_default",
+        "climate_debt_stress",
+        "price_volatility",
+        "insurance_coverage",
+        "irrigation_access",
+        "soil_health"
+      ],
+      "top_shap_features": [
+        "payment_history",
+        "insurance_coverage",
+        "climate_debt_stress",
+        "debt_to_income",
+        "price_volatility",
+        "repo_rate",
+        "savings_ratio",
+        "ndvi_anomaly"
+      ]
+    },
+    "HistGradientBoosting": {
+      "spearman_rho": 0.38605641517252204,
+      "spearman_pvalue": 0.04244652036015401,
+      "top_true_features": [
+        "payment_history",
+        "debt_to_income",
+        "prior_default",
+        "climate_debt_stress",
+        "price_volatility",
+        "insurance_coverage",
+        "irrigation_access",
+        "soil_health"
+      ],
+      "top_shap_features": [
+        "payment_history",
+        "insurance_coverage",
+        "climate_debt_stress",
+        "debt_to_income",
+        "education_level",
+        "price_volatility",
+        "flood_risk",
+        "ndvi_anomaly"
+      ]
+    }
+  },
+  "rankings": [
+    {
+      "feature": "debt_to_income",
+      "model": "XGBoost",
+      "true_abs_weight": 1.45,
+      "mean_abs_shap": 0.1459151804447174,
+      "true_rank": 2.0,
+      "shap_rank": 4.0
+    },
+    {
+      "feature": "loan_to_land",
+      "model": "XGBoost",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.07263283431529999,
+      "true_rank": 19.5,
+      "shap_rank": 18.0
+    },
+    {
+      "feature": "payment_history",
+      "model": "XGBoost",
+      "true_abs_weight": 2.45,
+      "mean_abs_shap": 0.2194962501525879,
+      "true_rank": 1.0,
+      "shap_rank": 1.0
+    },
+    {
+      "feature": "savings_ratio",
+      "model": "XGBoost",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.08790786564350128,
+      "true_rank": 19.5,
+      "shap_rank": 7.0
+    },
+    {
+      "feature": "credit_utilization",
+      "model": "XGBoost",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.0703672245144844,
+      "true_rank": 19.5,
+      "shap_rank": 19.0
+    },
+    {
+      "feature": "prior_default",
+      "model": "XGBoost",
+      "true_abs_weight": 0.85,
+      "mean_abs_shap": 0.03860853984951973,
+      "true_rank": 3.5,
+      "shap_rank": 28.0
+    },
+    {
+      "feature": "annual_income_log",
+      "model": "XGBoost",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.04254231974482536,
+      "true_rank": 19.5,
+      "shap_rank": 27.0
+    },
+    {
+      "feature": "drought_risk",
+      "model": "XGBoost",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.061449214816093445,
+      "true_rank": 19.5,
+      "shap_rank": 21.0
+    },
+    {
+      "feature": "soil_moisture",
+      "model": "XGBoost",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.08282600343227386,
+      "true_rank": 19.5,
+      "shap_rank": 9.0
+    },
+    {
+      "feature": "ndvi_current",
+      "model": "XGBoost",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.04612036049365997,
+      "true_rank": 19.5,
+      "shap_rank": 26.0
+    },
+    {
+      "feature": "ndvi_anomaly",
+      "model": "XGBoost",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.08388049900531769,
+      "true_rank": 19.5,
+      "shap_rank": 8.0
+    },
+    {
+      "feature": "rainfall_deviation",
+      "model": "XGBoost",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.08121531456708908,
+      "true_rank": 19.5,
+      "shap_rank": 12.0
+    },
+    {
+      "feature": "temperature_stress",
+      "model": "XGBoost",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.04684263840317726,
+      "true_rank": 19.5,
+      "shap_rank": 24.0
+    },
+    {
+      "feature": "flood_risk",
+      "model": "XGBoost",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.06990491598844528,
+      "true_rank": 19.5,
+      "shap_rank": 20.0
+    },
+    {
+      "feature": "climate_debt_stress",
+      "model": "XGBoost",
+      "true_abs_weight": 0.85,
+      "mean_abs_shap": 0.18553371727466583,
+      "true_rank": 3.5,
+      "shap_rank": 3.0
+    },
+    {
+      "feature": "farmer_age",
+      "model": "XGBoost",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.07835309207439423,
+      "true_rank": 19.5,
+      "shap_rank": 13.0
+    },
+    {
+      "feature": "education_level",
+      "model": "XGBoost",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.07679153233766556,
+      "true_rank": 19.5,
+      "shap_rank": 14.0
+    },
+    {
+      "feature": "family_size",
+      "model": "XGBoost",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.07265809923410416,
+      "true_rank": 19.5,
+      "shap_rank": 17.0
+    },
+    {
+      "feature": "land_size_log",
+      "model": "XGBoost",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.04617398604750633,
+      "true_rank": 19.5,
+      "shap_rank": 25.0
+    },
+    {
+      "feature": "irrigation_access",
+      "model": "XGBoost",
+      "true_abs_weight": 0.35,
+      "mean_abs_shap": 0.07459965348243713,
+      "true_rank": 7.0,
+      "shap_rank": 15.0
+    },
+    {
+      "feature": "insurance_coverage",
+      "model": "XGBoost",
+      "true_abs_weight": 0.45,
+      "mean_abs_shap": 0.19865240156650543,
+      "true_rank": 6.0,
+      "shap_rank": 2.0
+    },
+    {
+      "feature": "crop_diversification",
+      "model": "XGBoost",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.07290223240852356,
+      "true_rank": 19.5,
+      "shap_rank": 16.0
+    },
+    {
+      "feature": "soil_health",
+      "model": "XGBoost",
+      "true_abs_weight": 0.3,
+      "mean_abs_shap": 0.0827130600810051,
+      "true_rank": 8.0,
+      "shap_rank": 10.0
+    },
+    {
+      "feature": "market_distance_log",
+      "model": "XGBoost",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.048784319311380386,
+      "true_rank": 19.5,
+      "shap_rank": 23.0
+    },
+    {
+      "feature": "price_volatility",
+      "model": "XGBoost",
+      "true_abs_weight": 0.5,
+      "mean_abs_shap": 0.11519508063793182,
+      "true_rank": 5.0,
+      "shap_rank": 5.0
+    },
+    {
+      "feature": "price_trend",
+      "model": "XGBoost",
+      "true_abs_weight": 0.28,
+      "mean_abs_shap": 0.08255690336227417,
+      "true_rank": 9.0,
+      "shap_rank": 11.0
+    },
+    {
+      "feature": "repo_rate",
+      "model": "XGBoost",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.08844614028930664,
+      "true_rank": 19.5,
+      "shap_rank": 6.0
+    },
+    {
+      "feature": "wpi_inflation",
+      "model": "XGBoost",
+      "true_abs_weight": 0.049999999999999996,
+      "mean_abs_shap": 0.0576210543513298,
+      "true_rank": 10.0,
+      "shap_rank": 22.0
+    },
+    {
+      "feature": "debt_to_income",
+      "model": "HistGradientBoosting",
+      "true_abs_weight": 1.45,
+      "mean_abs_shap": 0.15114111300376956,
+      "true_rank": 2.0,
+      "shap_rank": 4.0
+    },
+    {
+      "feature": "loan_to_land",
+      "model": "HistGradientBoosting",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.05918370943341551,
+      "true_rank": 19.5,
+      "shap_rank": 20.0
+    },
+    {
+      "feature": "payment_history",
+      "model": "HistGradientBoosting",
+      "true_abs_weight": 2.45,
+      "mean_abs_shap": 0.22396170489029438,
+      "true_rank": 1.0,
+      "shap_rank": 1.0
+    },
+    {
+      "feature": "savings_ratio",
+      "model": "HistGradientBoosting",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.0821684849418831,
+      "true_rank": 19.5,
+      "shap_rank": 12.0
+    },
+    {
+      "feature": "credit_utilization",
+      "model": "HistGradientBoosting",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.07836115317879369,
+      "true_rank": 19.5,
+      "shap_rank": 13.0
+    },
+    {
+      "feature": "prior_default",
+      "model": "HistGradientBoosting",
+      "true_abs_weight": 0.85,
+      "mean_abs_shap": 0.03186790577232822,
+      "true_rank": 3.5,
+      "shap_rank": 28.0
+    },
+    {
+      "feature": "annual_income_log",
+      "model": "HistGradientBoosting",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.03404433290691207,
+      "true_rank": 19.5,
+      "shap_rank": 26.0
+    },
+    {
+      "feature": "drought_risk",
+      "model": "HistGradientBoosting",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.04726073618962183,
+      "true_rank": 19.5,
+      "shap_rank": 23.0
+    },
+    {
+      "feature": "soil_moisture",
+      "model": "HistGradientBoosting",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.07104521057382328,
+      "true_rank": 19.5,
+      "shap_rank": 16.0
+    },
+    {
+      "feature": "ndvi_current",
+      "model": "HistGradientBoosting",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.03817039695450383,
+      "true_rank": 19.5,
+      "shap_rank": 25.0
+    },
+    {
+      "feature": "ndvi_anomaly",
+      "model": "HistGradientBoosting",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.09321547581587283,
+      "true_rank": 19.5,
+      "shap_rank": 8.0
+    },
+    {
+      "feature": "rainfall_deviation",
+      "model": "HistGradientBoosting",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.06021103335073093,
+      "true_rank": 19.5,
+      "shap_rank": 19.0
+    },
+    {
+      "feature": "temperature_stress",
+      "model": "HistGradientBoosting",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.03328393031236794,
+      "true_rank": 19.5,
+      "shap_rank": 27.0
+    },
+    {
+      "feature": "flood_risk",
+      "model": "HistGradientBoosting",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.09460553748971084,
+      "true_rank": 19.5,
+      "shap_rank": 7.0
+    },
+    {
+      "feature": "climate_debt_stress",
+      "model": "HistGradientBoosting",
+      "true_abs_weight": 0.85,
+      "mean_abs_shap": 0.1685961206622812,
+      "true_rank": 3.5,
+      "shap_rank": 3.0
+    },
+    {
+      "feature": "farmer_age",
+      "model": "HistGradientBoosting",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.06304525520035903,
+      "true_rank": 19.5,
+      "shap_rank": 17.0
+    },
+    {
+      "feature": "education_level",
+      "model": "HistGradientBoosting",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.13575953174036162,
+      "true_rank": 19.5,
+      "shap_rank": 5.0
+    },
+    {
+      "feature": "family_size",
+      "model": "HistGradientBoosting",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.08407255698363328,
+      "true_rank": 19.5,
+      "shap_rank": 11.0
+    },
+    {
+      "feature": "land_size_log",
+      "model": "HistGradientBoosting",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.06054309609391985,
+      "true_rank": 19.5,
+      "shap_rank": 18.0
+    },
+    {
+      "feature": "irrigation_access",
+      "model": "HistGradientBoosting",
+      "true_abs_weight": 0.35,
+      "mean_abs_shap": 0.053425615902023924,
+      "true_rank": 7.0,
+      "shap_rank": 21.0
+    },
+    {
+      "feature": "insurance_coverage",
+      "model": "HistGradientBoosting",
+      "true_abs_weight": 0.45,
+      "mean_abs_shap": 0.19014539372415074,
+      "true_rank": 6.0,
+      "shap_rank": 2.0
+    },
+    {
+      "feature": "crop_diversification",
+      "model": "HistGradientBoosting",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.07322314876356191,
+      "true_rank": 19.5,
+      "shap_rank": 15.0
+    },
+    {
+      "feature": "soil_health",
+      "model": "HistGradientBoosting",
+      "true_abs_weight": 0.3,
+      "mean_abs_shap": 0.07829226182149164,
+      "true_rank": 8.0,
+      "shap_rank": 14.0
+    },
+    {
+      "feature": "market_distance_log",
+      "model": "HistGradientBoosting",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.044276158520858463,
+      "true_rank": 19.5,
+      "shap_rank": 24.0
+    },
+    {
+      "feature": "price_volatility",
+      "model": "HistGradientBoosting",
+      "true_abs_weight": 0.5,
+      "mean_abs_shap": 0.09494075458057467,
+      "true_rank": 5.0,
+      "shap_rank": 6.0
+    },
+    {
+      "feature": "price_trend",
+      "model": "HistGradientBoosting",
+      "true_abs_weight": 0.28,
+      "mean_abs_shap": 0.08677026382628213,
+      "true_rank": 9.0,
+      "shap_rank": 9.0
+    },
+    {
+      "feature": "repo_rate",
+      "model": "HistGradientBoosting",
+      "true_abs_weight": 0.0,
+      "mean_abs_shap": 0.08576022675844584,
+      "true_rank": 19.5,
+      "shap_rank": 10.0
+    },
+    {
+      "feature": "wpi_inflation",
+      "model": "HistGradientBoosting",
+      "true_abs_weight": 0.049999999999999996,
+      "mean_abs_shap": 0.047863976380693576,
+      "true_rank": 10.0,
+      "shap_rank": 22.0
+    }
+  ]
+}

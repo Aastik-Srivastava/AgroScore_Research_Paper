@@ -28,27 +28,27 @@
 \newcommand{\auc}{\mbox{AUC}}
 
 \hypersetup{
-  pdftitle={AgroScore: A Reproducible Synthetic Benchmark for Climate-Aware Agricultural Credit Risk Modelling},
+  pdftitle={AgroScore: A Reproducible Synthetic Benchmarking Framework for Privacy-Restricted Agricultural Credit Research},
   pdfauthor={Aastik Srivastava},
   pdfkeywords={agricultural credit, synthetic data, NDVI, probability of default, calibration, benchmarking, reproducibility}
 }
 
 \begin{document}
 
-\title{AgroScore: A Reproducible Synthetic Benchmark for Climate-Aware Agricultural Credit Risk Modelling}
+\title{AgroScore: A Reproducible Synthetic Benchmarking Framework for Privacy-Restricted Agricultural Credit Research}
 
 \author{Aastik Srivastava%
 \thanks{A. Srivastava is with the Manipal Institute of Technology, Manipal Academy of Higher Education, Manipal, Karnataka 576104, India (e-mail: srivastavaaastik@gmail.com). ORCID: 0009-0008-1146-1271.}%
 \thanks{Manuscript prepared September 2026. All data used in this study are synthetic; no borrower records were accessed. The generator, generated cohorts, machine-readable results and figure scripts are archived at \url{https://doi.org/10.5281/zenodo.22871548}; the author is responsible for keeping that archive's contents synchronised with the exact code and seed reported here before final submission.}}
 
-\markboth{Srivastava: AgroScore Synthetic Benchmark for Agricultural Credit Risk}%
-{Srivastava: AgroScore Synthetic Benchmark for Agricultural Credit Risk}
+\markboth{Srivastava: AgroScore Synthetic Benchmarking Framework}%
+{Srivastava: AgroScore Synthetic Benchmarking Framework}
 
 \maketitle
 
 %=====================================================================
 \begin{abstract}
-Agricultural lending couples ordinary repayment risk with shocks to crop condition, weather and output prices, while borrower-level performance data are rarely shareable. This paper contributes AgroScore, a fully specified synthetic benchmark for climate-aware agricultural credit risk, together with diagnostics for properties testable without a real reference portfolio. The generator produces temporally ordered cohorts over eight Indian agricultural regions with 28 covariates, unobserved heterogeneity and a prespecified adverse regime. To avoid encoding a preferred learner in a single outcome equation, we prespecify four outcome regimes: additive-logit, threshold, conditional-interaction and hybrid. Across ten independently generated cohorts per regime, model ranking changes with structure. Logistic regression leads in the additive-logit regime (mean $\auc=0.695$), random forest leads under thresholds ($0.782$), histogram boosting leads under conditional interactions ($0.782$), and extra trees narrowly leads in the hybrid regime ($0.678$). The original seven-configuration analysis is retained as a detailed reference-regime case study rather than evidence that nonlinear modelling is generally ineffective. Within that reference regime, a ten-seed ablation finds that removing the financial block reduces discrimination consistently ($\Delta\auc=-0.027\pm0.009$), whereas removing the engineered climate--debt feature changes $\auc$ by $+0.0003\pm0.0012$. Out-of-time evaluation raises discrimination to $0.712$ while degrading calibration (ECE $0.012\rightarrow0.036$), showing that ranking and probability accuracy can dissociate under shift. All conclusions are properties of declared synthetic mechanisms, not evidence about real lending portfolios.
+Agricultural lending couples ordinary repayment risk with shocks to crop condition, weather and output prices, while borrower-level performance data are rarely shareable. This paper contributes AgroScore, a fully specified synthetic benchmarking framework for privacy-restricted agricultural credit research, together with diagnostics for properties testable without a real reference portfolio. The generator produces temporally ordered cohorts over eight stylised Indian agricultural regions with 28 covariates, unobserved heterogeneity and a prespecified adverse regime. It is not fitted to agronomic, meteorological or loan-performance data; the purpose is reproducible protocol testing under declared mechanisms. To avoid presenting one hand-crafted equation as a universal credit process, we prespecify four outcome regimes: additive-logit, threshold, conditional-interaction and hybrid. Across ten independently generated cohorts per regime, model ranking changes with structure. Logistic regression leads in the additive-logit regime (mean $\auc=0.695$), random forest leads under thresholds ($0.782$), histogram boosting leads under conditional interactions ($0.782$), and extra trees narrowly leads in the hybrid regime ($0.678$). The original seven-configuration analysis is retained as a generator recovery and pipeline sanity check rather than evidence that nonlinear modelling is generally ineffective. Within that reference regime, a ten-seed ablation finds that removing the financial block reduces discrimination consistently ($\Delta\auc=-0.027\pm0.009$), whereas removing the engineered climate--debt feature changes $\auc$ by $+0.0003\pm0.0012$. Out-of-time evaluation raises discrimination to $0.712$ while degrading calibration (ECE $0.012\rightarrow0.036$), showing that ranking and probability accuracy can dissociate under shift. All conclusions are properties of declared synthetic mechanisms, not evidence about real lending portfolios.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -74,9 +74,9 @@ This paper does not claim that AgroScore data are realistic. That claim is unver
 Our contributions are:
 
 \begin{enumerate}
-\item \textbf{A fully specified synthetic benchmark} for climate-aware agricultural credit risk (Section~\ref{sec:architecture}), giving every distribution family, parameter, structural equation and regional stratum, with temporal ordering and a prespecified late-period adverse regime.
+\item \textbf{A fully specified synthetic benchmarking framework} for privacy-restricted agricultural-credit research (Section~\ref{sec:architecture}), giving every distribution family, parameter, structural equation and regional stratum, with temporal ordering and a prespecified late-period adverse regime.
 
-\item \textbf{A six-part generator diagnostic protocol} (Section~\ref{sec:fidelity}) comprising two-sample detection testing, cross-cohort near-duplicate auditing, marginal sign checks, spectral analysis, a latent Fr\'{e}chet distance check between independently seeded cohorts, and a SHAP-to-mechanism rank-conformance test for two tree ensembles. We propose this protocol as a candidate minimum diagnostic set rather than an exhaustive certificate.
+\item \textbf{A six-part generator diagnostic protocol} (Section~\ref{sec:fidelity}) comprising two-sample detection testing, cross-cohort near-duplicate auditing, marginal sign checks, spectral analysis, a random-embedding moment check expressed as a Fr\'{e}chet distance, and an attribution-to-mechanism rank-conformance check for two tree ensembles. We propose this protocol as a compact diagnostic set rather than an exhaustive certificate.
 
 \item \textbf{A four-regime outcome-mechanism sensitivity benchmark} (Section~\ref{sec:regimes}) repeated across ten seeds, showing that learner rankings reverse when the declared outcome structure changes, plus a detailed seven-configuration analysis of the additive-logit reference regime.
 
@@ -257,7 +257,7 @@ d_i = \Pi_{[0,1]}\!\left(\delta_{r(i)} + s_i + \varepsilon^d_i - 0.18\,\text{irr
 \end{equation}
 where $\Pi_{[a,b]}$ denotes clipping to $[a,b]$. Irrigation thus attenuates drought exposure, which is the first structural relationship we later assess descriptively.
 
-The remaining environmental variables descend from $d_i$:
+The remaining environmental variables descend from $d_i$ through stylised, support-respecting equations rather than through retrieved satellite or meteorological products:
 \begin{align}
 m_i &= \Pi_{[0,1]}\!\left(0.78 - 0.63 d_i + 0.12\,\text{irr}_i + \mathcal{N}(0,0.09^2)\right), \label{eq:sm}\\
 z_i &= \Pi_{[-2,2]}\!\left(-0.75 d_i + 0.35\,\text{irr}_i + \mathcal{N}(0,0.32^2)\right), \label{eq:ndvianom}\\
@@ -266,7 +266,7 @@ v_i &= \Pi_{[0.05,0.92]}\!\left(0.52 + 0.13 z_i + 0.12 m_i + \mathcal{N}(0,0.06^
 f_i &= \Pi_{[0,1]}\!\left(\text{Beta}(1.5,7) + 0.45\max(\rho_i,0)\right), \label{eq:flood}\\
 \theta_i &= \Pi_{[0,1]}\!\left(0.20 + 0.42 d_i + \mathcal{N}(0,0.14^2)\right), \label{eq:temp}
 \end{align}
-where $m$ is soil moisture, $z$ the NDVI anomaly (a $z$-score-scaled deviation), $v$ the current NDVI level, $\rho$ rainfall deviation, $f$ flood risk and $\theta$ temperature stress. The NDVI level is bounded to $[0.05,0.92]$ to respect the physical range of the index \cite{tucker1979ndvi}, and its construction as a level driven by an anomaly plus a soil-moisture term mirrors the structure of MOD13Q1 composites \cite{mod13q1} without any claim that MOD13Q1 pixels were retrieved. Flood risk uses a right-skewed $\text{Beta}(1.5,7)$ base because flood exposure is a low-probability, heavy-tailed hazard.
+where $m$ is soil moisture, $z$ the NDVI anomaly (a $z$-score-scaled deviation), $v$ the current NDVI level, $\rho$ rainfall deviation, $f$ flood risk and $\theta$ temperature stress. The NDVI level is bounded to $[0.05,0.92]$ to respect the physical range of the index \cite{tucker1979ndvi}, and its construction as a level driven by an anomaly plus a soil-moisture term is a deliberately simplified proxy for vegetation-condition information. It does not claim to reproduce MOD13Q1 retrieval physics, pixel aggregation, atmospheric correction, crop calendars or cloud/missingness processes. Flood risk uses a right-skewed $\text{Beta}(1.5,7)$ base to create an infrequent bounded hazard in the simulator, not because that distribution has been estimated from flood records.
 
 \subsection{Farm, Household and Market Block}
 Landholding is lognormal around the regional mean, $L_i=\Pi_{[0.3,20]}(\lambda_{r(i)}\cdot\text{LogN}(0,0.45^2))$, reproducing the strong right skew characteristic of landholding distributions. Education $e_i$ is a discretised normal on $\{1,\dots,5\}$; age $\sim\mathcal{N}(45,12^2)$ clipped to $[21,75]$; household size $\sim\text{Poisson}(4.2)$ clipped to $[1,11]$. Insurance uptake depends on education and irrigation,
@@ -516,9 +516,9 @@ Figure~\ref{fig:pca} reports PC1 at 19.6\% of variance, PC2 at 10.0\%, and 65.8\
 
 Figure~\ref{fig:tsne} provides a qualitative nonlinear projection. Defaults and regions do not form visually disjoint clusters in this view, but no claim about Bayes-optimal discrimination, shared support or intrinsic dimensionality is inferred from t-SNE alone.
 
-\subsection{Test 5: Latent Fr\'{e}chet Distance}
+\subsection{Test 5: Random-Embedding Moment Check}
 \label{sec:frechet}
-Tests 1--4 operate in the native 28-dimensional feature space. A complementary diagnostic asks whether two independently seeded cohorts remain close under a fixed random embedding, which is a cheap proxy for the kind of representation a downstream model might construct and is insensitive to the particular marginal or pairwise checks already reported. We adapt the Fr\'{e}chet distance used to compare generative-image distributions in embedding space \cite{heusel2017fid}, using its closed form for two multivariate Gaussians fitted to the embedded cohorts \cite{dowson1982frechet}:
+Tests 1--4 operate in the native 28-dimensional feature space. A complementary diagnostic asks whether two independently seeded cohorts have similar first and second moments after a fixed random projection. We report this as a random-embedding moment check rather than as evidence about a learned manifold. The scalar is computed using the closed-form Fr\'{e}chet distance between two multivariate Gaussians fitted to the embedded cohorts \cite{dowson1982frechet}; the image-generation literature uses an analogous formula in learned feature space \cite{heusel2017fid}, but no such learned representation is claimed here:
 \begin{equation}
 \text{FD}(\mathcal{N}_1,\mathcal{N}_2) = \lVert \mu_1-\mu_2\rVert_2^2 + \operatorname{tr}\!\left(\Sigma_1+\Sigma_2-2(\Sigma_1\Sigma_2)^{1/2}\right).
 \label{eq:frechet}
@@ -526,7 +526,7 @@ Tests 1--4 operate in the native 28-dimensional feature space. A complementary d
 Two independently seeded cohorts ($S_1=20260916$, $S_2=20260917$; $n_1=n_2=8000$) are each standardised on their own covariate statistics and projected through one fixed standardised random linear map $W\in\mathbb{R}^{28\times64}$ (projection seed $314159$, shared across cohorts) into a 64-dimensional latent space. We then fit a Gaussian to each embedded cohort and evaluate \eqref{eq:frechet}.
 
 \begin{table}[!t]
-\caption{Test 5 --- Latent Fr\'{e}chet Distance Between Independently Seeded Cohorts}
+\caption{Test 5 --- Random-Embedding Moment Check Between Independently Seeded Cohorts}
 \label{tab:frechet}
 \centering
 \footnotesize
@@ -542,16 +542,16 @@ Fr\'{e}chet distance (FD) & \textbf{0.1095} \\
 \end{tabular}
 \end{table}
 
-Table~\ref{tab:frechet} reports $\text{FD}=0.1095$, small relative to the trace of either cohort's latent covariance ($\approx65$), so the two independently generated cohorts occupy closely overlapping regions of the projected latent space. Because the map $W$ is linear and fixed rather than learned, the result is direct evidence of global first- and second-moment agreement in this particular embedding and is not a claim about non-linear manifold structure, local mode collapse in an arbitrary learned encoder, or agreement of higher moments; a low FD under one random projection does not certify stability under every possible embedding.
+Table~\ref{tab:frechet} reports $\text{FD}=0.1095$, small relative to the trace of either cohort's projected covariance ($\approx65$). Because the map $W$ is linear and fixed rather than learned, the result is evidence only of global first- and second-moment agreement in this particular embedding. It is not a claim about non-linear manifold structure, local mode collapse in an arbitrary learned encoder, or agreement of higher moments; a low FD under one random projection does not certify stability under every possible embedding.
 
-\subsection{Test 6: Interpretability-to-Mechanism Conformance (The SHAP Test)}
+\subsection{Test 6: Attribution-to-Mechanism Conformance}
 \label{sec:shaptest}
-Tests 1--5 examine the covariate distribution but not whether a fitted model's explanations recover the mechanism that Section~\ref{sec:generator} declares. We adapt TreeSHAP \cite{lundberg2017shap,lundberg2020treeshap} as a conformance probe: if a tree ensemble fitted to $\dgp$ output recovers, through post-hoc attribution alone, an ordering of feature importance resembling the declared structural weights, that is evidence the learners are exploiting the intended mechanism rather than an artefact of the generator's incidental correlational structure.
+Tests 1--5 examine the covariate distribution but not whether fitted tree ensembles attend to variables that the declared mechanism makes relevant. We use TreeSHAP \cite{lundberg2017shap,lundberg2020treeshap} only as an attribution-to-mechanism conformance probe: if a tree ensemble fitted to $\dgp$ output recovers, through post-hoc attribution alone, an ordering of feature importance resembling the declared structural weights, that is evidence about implementation behaviour in this closed-world simulator. It is not evidence of financial or agricultural interpretability in real portfolios.
 
 For each of the 28 covariates we compute (i) its true structural weight, $|\beta_j|$, read directly from the additive terms of \eqref{eq:latent} (a covariate absent from \eqref{eq:latent} receives $|\beta_j|=0$), and (ii) its mean absolute TreeSHAP value over the held-out test fold, $\overline{|\phi_j|}$, for two tree ensembles (XGBoost and HistGradientBoosting) fitted under the standard protocol of Section~\ref{sec:benchmark}. We then compute the Spearman rank correlation between the two rankings.
 
 \begin{table}[!t]
-\caption{Test 6 --- SHAP-to-Structural-Weight Rank Conformance}
+\caption{Test 6 --- Attribution-to-Structural-Weight Rank Conformance}
 \label{tab:shap}
 \centering
 \footnotesize
@@ -570,14 +570,14 @@ Table~\ref{tab:shap} reports moderate, statistically significant positive rank a
 \begin{figure}[!t]
 \centering
 \includegraphics[width=\columnwidth]{fig_shap_conformance.pdf}
-\caption{Test 6. Mean absolute TreeSHAP value versus true structural weight $|\beta_j|$ for all 28 covariates, XGBoost (left) and HistGradientBoosting (right). Points closer to the diagonal have SHAP-recovered importance proportional to the declared mechanism; \texttt{payment\_history}, \texttt{insurance\_coverage}, \texttt{climate\_debt\_stress} and \texttt{debt\_to\_income} cluster near the top of both axes.}
+\caption{Test 6. Mean absolute TreeSHAP value versus true structural weight $|\beta_j|$ for all 28 covariates, XGBoost (left) and HistGradientBoosting (right). Points closer to the diagonal have SHAP-recovered importance proportional to the declared mechanism; the figure is a closed-world conformance check, not a substantive interpretation of agricultural credit risk.}
 \label{fig:shap}
 \end{figure}
 
-We treat Test 6 as evidence that the fitted learners are not systematically attending to mechanism-irrelevant covariates, not as a claim that TreeSHAP recovers the generator exactly: rank correlation of $0.39$--$0.46$ leaves roughly half of the ordering unexplained by the linear-rank relationship, consistent with the well-documented tendency of tree-based attribution to redistribute importance across correlated proxies \cite{lundberg2020treeshap}.
+We treat Test 6 as evidence that the fitted learners are not systematically attending to mechanism-irrelevant covariates, not as a claim that TreeSHAP recovers the generator exactly or reveals domain insight: rank correlation of $0.39$--$0.46$ leaves roughly half of the ordering unexplained by the linear-rank relationship, consistent with the well-documented tendency of tree-based attribution to redistribute importance across correlated proxies \cite{lundberg2020treeshap}.
 
 \subsection{Summary of Diagnostics}
-The diagnostics find no detector-visible seed instability (Test 1), no excess cross-cohort near-duplicate concentration (Test 2), agreement with ten prespecified marginal directions (Test 3), no extreme linear spectral concentration (Test 4), a small latent Fr\'{e}chet distance between independently seeded cohorts under a fixed random embedding (Test 5), and moderate, statistically significant SHAP-to-mechanism rank conformance for two tree ensembles (Test 6). Together they provide bounded evidence of internal conformance. They do not verify every structural parameter and cannot establish resemblance to a real Indian agricultural loan portfolio.
+The diagnostics find no detector-visible seed instability (Test 1), no excess cross-cohort near-duplicate concentration (Test 2), agreement with ten prespecified marginal directions (Test 3), no extreme linear spectral concentration (Test 4), a small random-embedding moment distance between independently seeded cohorts (Test 5), and moderate, statistically significant attribution-to-mechanism rank conformance for two tree ensembles (Test 6). Together they provide bounded evidence of internal conformance. They do not verify every structural parameter and cannot establish resemblance to a real Indian agricultural loan portfolio.
 
 %=====================================================================
 \section{Model Benchmark}
@@ -1072,7 +1072,7 @@ Before any operational consideration, a follow-on study should: (1) preregister 
 %=====================================================================
 \section{Conclusion}
 
-We presented AgroScore, a fully specified synthetic benchmark for climate-aware agricultural credit risk, together with six diagnostics adapted to the no-reference setting: two-sample detection testing ($\auc=0.5019\pm0.0042$), a cross-cohort near-duplicate check (DCR ratio $0.9956$), marginal directional agreement (10/10), spectral inspection (PC1 $=19.6\%$), a latent Fr\'{e}chet distance of $0.1095$ between independently seeded cohorts, and SHAP-to-mechanism rank conformance ($\rho=0.4592$ for XGBoost, $\rho=0.3861$ for HistGradientBoosting). These tests provide bounded evidence about implementation behaviour and should complement, not replace, parameter-level unit tests and validation against real data. We also demonstrated two multi-task outcome extensions --- LGD regression ($R^2=0.3771$, ridge) and Weibull time-to-default survival analysis ($C=0.6093$, Cox proportional hazards) --- attached to the same covariate vector and split protocol as the primary benchmark.
+We presented AgroScore, a fully specified synthetic benchmarking framework for privacy-restricted agricultural credit research, together with six diagnostics adapted to the no-reference setting: two-sample detection testing ($\auc=0.5019\pm0.0042$), a cross-cohort near-duplicate check (DCR ratio $0.9956$), marginal directional agreement (10/10), spectral inspection (PC1 $=19.6\%$), a random-embedding moment distance of $0.1095$ between independently seeded cohorts, and attribution-to-mechanism rank conformance ($\rho=0.4592$ for XGBoost, $\rho=0.3861$ for HistGradientBoosting). These tests provide bounded evidence about implementation behaviour and should complement, not replace, parameter-level unit tests and validation against real data. We also demonstrated two multi-task outcome extensions --- LGD regression ($R^2=0.3771$, ridge) and Weibull time-to-default survival analysis ($C=0.6093$, Cox proportional hazards) --- attached to the same covariate vector and split protocol as the primary benchmark.
 
 The four-regime experiment rejects a universal model-complexity conclusion. Logistic regression leads in the additive-logit reference regime, random forest under thresholds, histogram boosting under conditional interactions, and extra trees narrowly in the hybrid regime. The detailed reference-regime analysis remains useful as a recovery check: the stack is effectively tied with logistic regression, the financial-block ablation is the largest and most stable, and the engineered climate--debt feature has no measurable incremental benefit. Out-of-time evaluation raises $\auc$ to 0.712 while tripling expected calibration error and flipping the calibration intercept from $-0.392$ to $+0.437$, demonstrating that ranking and probability accuracy can dissociate under shift.
 
